@@ -17,9 +17,6 @@ class DataSource:
         return self
 
     def __exit__(self, type, value, traceback):
-        self.close()
-
-    def close(self) -> None:
         self._file.close()
         os.remove(self._file.name)
 
@@ -31,6 +28,10 @@ class DataSource:
         if txt != '':
             self._cursor += 1
         return txt
+
+    # def seek(self, line: int) -> None:
+    #     self._file.s seek(line)
+    #     self._file.flush()
 
 
 def load() -> DataSource:
